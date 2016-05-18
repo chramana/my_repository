@@ -1,0 +1,78 @@
+WASX7001I: wsadmin is the executable for WebSphere scripting. 
+Syntax: 
+
+wsadmin 
+	[ -h(elp)  ] 
+	[ -?  ]  
+	[ -c <command> ] 
+	[ -p <properties_file_name>] 
+	[ -profile <profile_script_name>] 
+	[ -f <script_file_name>] 
+	[ -javaoption java_option] 
+	[ -lang  language]  
+	[ -wsadmin_classpath  class path]  
+	[ -profileName profile]  
+	[ -conntype  
+		SOAP
+			[-host host_name]
+			[-port port_number]
+			[-user userid]
+			[-password password] | 
+		RMI
+			[-host host_name]
+			[-port port_number]
+			[-user userid]
+			[-password password] | 
+		JSR160RMI
+			[-host host_name]
+			[-port port_number]
+			[-user userid]
+			[-password password] | 
+		IPC
+			[-ipchost host_name]
+			[-port port_number]
+			[-user userid]
+			[-password password] | 
+		NONE 
+	]
+	[ -jobid <jobid_string>] 
+	[ -tracefile <trace_file>] 
+	[ -appendtrace <true/false>] 
+	[ script parameters ]
+
+Where 	"command" is a command to be passed to the script processor; 
+	"properties_file_name" is a java properties file to be used; 
+	"profile_script_name" is a script file to be run before the 
+		main command or file; 
+	"script_file_name" is a command to be passed to the script processor; 
+	"java_option" is a java standard or non-standard option to be passed 
+		to the java program; 
+	"language" is the language to be used to interpret scripts; 
+		supported values are "jacl" and "jython". 
+	"classpath" is a class path to be appended to built-in one;
+	"-conntype"  specifies the type of connection to be used; 
+		the default argument is "SOAP" 
+		a conntype of "NONE" means that no server connection is made
+		and certain operations will be performed in local mode;
+	"host_name"  is the host used for the SOAP or RMI connection; 
+		the default is the local host; 
+	"port_number"  is the port used for the SOAP or RMI connection; 
+	"userid"  is the userid required when the server is running in
+		secure mode;
+	"password"  is the password required when the server is running in
+		secure mode;
+	"script parameters"  is anything else on the command line.  These 
+		are passed to the script in the argv variable; the number of
+		parameters is available in the argc variable.
+	"jobid_string" is a jobID string to be used to audit each invocation 
+		of wsadmin;
+	"trace_file" is the log file name and location where wsadmin trace 
+		output is directed;
+
+If no command or script is specified, an interpreter shell is 
+created for interactive use. To leave an interactive scripting session,
+use the "quit" or "exit" commands.
+
+Several commands, properties files, and profiles may be specified 
+on a single command line.  They are processed and run in 
+order of their specification.
